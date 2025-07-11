@@ -23,5 +23,5 @@ A simple Django web application to create and manage events with user registrati
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/event-registration.git
+   git clone https://github.com/Nirajan002/CodeAlpha_EventRegistration.git
    cd event-registration
