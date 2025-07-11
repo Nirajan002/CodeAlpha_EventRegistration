@@ -1,0 +1,29 @@
+{% extends 'events/base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/my_register.css' %}">
+{% endblock %}
+{% block content %}
+
+  <h2>My Registered Events</h2>
+  {% if registered_events %}
+    <ul>
+      {% for event in registered_events %}
+        <li><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a> (📅{{ event.date|date:"Y-m-d - H:i" }})</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>😔You haven't registered for any events.</p>
+  {% endif %}
+
+  <h2>Events I Created</h2>
+  {% if created_events %}
+    <ul>
+      {% for event in created_events %}
+        <li><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a> (📅{{ event.date|date:"Y-m-d - H:i" }})</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>😓You haven't created any events.</p>
+  {% endif %}
+{% endblock %}

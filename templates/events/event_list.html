@@ -1,0 +1,41 @@
+{% extends "events/base.html" %}
+{% block content %}
+
+<div class="event-page">
+    <h2 class="section-title">All Events</h2>
+
+    <div class="event-grid">
+        {% for event in events %}
+        <div class="event-card">
+            
+            {% if user.is_authenticated %}
+                <h3 class="event-title">
+                    <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a>
+                </h3>
+                <p class="event-date">📅 {{ event.date|date:"M d, Y — H:i" }}</p>
+            {% else %}
+                <h3 class="event-title">
+                    <a href="{% url 'login' %}?next={% url 'event_detail' event.id %}" onclick="return confirm('Please login before viewing event detail')">{{ event.title }}</a>
+                </h3>
+                <p class="event-date">📅 {{ event.date|date:"M d, Y — H:i" }}</p>
+            {% endif %}
+
+            <div class="event-action">
+                {% if user.is_authenticated %}
+                    {% if event.id in registered_event_ids %}
+                        <span class="registered-badge">✅ Registered</span>
+                    {% else %}
+                        <a href="{% url 'register_event' event.id %}" class="btn-register" onclick="return confirm('Do tou want to register to this event?')">Register</a>
+                    {% endif %}
+                {% else %}
+                    <a href="{% url 'login' %}?next={% url 'register_event' event.id %}" class="btn-register" onclick="return confirm('Please login before registering for an event')">Register</a>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-events">😭No events found.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

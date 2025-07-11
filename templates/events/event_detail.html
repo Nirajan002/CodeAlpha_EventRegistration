@@ -1,0 +1,67 @@
+{% extends "events/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/event_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>{{ event.title }}</h1>
+
+    <p><strong>Hosted by:</strong> {{ event.created_by.username | title }}</p>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+    <p><strong>Date:</strong> {{ event.date|date:"Y-m-d H:i" }}</p>
+    <p><strong>Capacity:</strong> {{ event.capacity }}</p>
+
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <hr>
+
+    {% if user_registered %}
+      <p>You are registered for this event.</p>
+      <button disabled>Registered</button>
+      <form method="post" action="{% url 'cancel_registration' registration_id=user_registration.id %}">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('Are you sure you want to cancel your registration?');">
+          Cancel Registration
+        </button>
+      </form>
+    {% else %}
+      <form method="post" action="{% url 'register_event' event_id=event.id %}">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('Are you sure you want to register for this event?');">
+          Register
+        </button>
+      </form>
+    {% endif %}
+
+    {% if user == event.created_by %}
+      <p>
+        <a href="{% url 'edit_event' event.id %}">Edit</a> |
+        <a href="{% url 'delete_event' event.id %}">Delete</a>
+      </p>
+
+      <h1>📋 Registered Users</h>
+
+      {% if registrations %}
+        <h4>Registered Users (Total: {{ registrations|length }})</h4>
+        <ul>
+          {% for reg in registrations %}
+            <li>{{ reg.user.username }} — {{ reg.timestamp|date:"Y-m-d H:i" }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>😭No one has registered yet.</p>
+      {% endif %}
+    {% endif %}
+
+    <hr>
+
+    <a href="{% url 'event_list' %}">← Back to Events</a>
+{% endblock %}

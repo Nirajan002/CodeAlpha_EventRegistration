@@ -1,0 +1,25 @@
+{% extends 'events/base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<body>
+    <h2>Login</h2>
+
+    {% if form.errors %}
+        <p style="color:red;">Invalid username or password.</p>
+    {% endif %}
+
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+</body>
+{% endblock %}

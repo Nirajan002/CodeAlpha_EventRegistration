@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #f8f9ff, #ece4ff);
+    min-height: 100vh;
+    color: #333;
+    padding: 40px;
+    border-radius: 10px;
+    
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-radius: 10px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #6a0dad;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links .btn {
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    background-color: transparent;
+    border: 2px solid #6a0dad;
+    color: #6a0dad;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links .btn:hover {
+    background-color: #6a0dad;
+    color: white;
+}
+
+.nav-links .logout {
+    background-color: #ff4d4f;
+    border-color: #ff4d4f;
+    color: white;
+}
+
+.nav-links .logout:hover {
+    background-color: #cc0000;
+}
+
+/* Main content block */
+main {
+    padding: 30px 20px;
+}
+
+/* Event List Styling */
+.event-page {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #6a0dad;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-4px);
+}
+
+.event-title a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+
+.event-title a:hover {
+    color: #6a0dad;
+}
+
+.event-date {
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 8px;
+}
+
+.event-action {
+    margin-top: 20px;
+}
+
+.btn-register {
+    display: inline-block;
+    padding: 8px 16px;
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.btn-register:hover {
+    background: linear-gradient(to right, #4a00e0, #8e2de2);
+}
+
+.registered-badge {
+    color: green;
+    font-weight: bold;
+    font-size: 0.95rem;
+    background: #e6ffe6;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}

@@ -1,0 +1,24 @@
+{% extends "events/base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="info-section">
+        <h1>Welcome to the Event Registration System 🎉</h1>
+        <p>Plan, manage, and attend amazing events with ease! Whether you're organizing a conference, workshop, or meetup, our system helps you keep track of registrations smoothly.</p>
+
+        <p>Features include:</p>
+        <ul style="text-align: left; max-width: 400px; margin: 0 auto 30px;">
+            <li>Easy event creation and editing</li>
+            <li>User registration and authentication</li>
+            <li>Real-time attendee tracking</li>
+            <li>Responsive design for all devices</li>
+        </ul>
+
+        <a href="{% url 'event_list' %}" class="button">Browse Events</a>
+    </div>
+</div>
+{% endblock %}

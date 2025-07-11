@@ -1,0 +1,14 @@
+{% extends 'events/base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/edit_event.css' %}">
+{% endblock %}
+{% block content %}
+  <h2>Edit Event: {{ event.title }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+  </form>
+{% endblock %}
