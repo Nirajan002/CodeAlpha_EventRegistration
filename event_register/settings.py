@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-wbbj9!1=02u*h8f-36!#lmec9#zo(8we%y*9iy!cju4c4nxkmm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['your-service-name.onrender.com']
+ALLOWED_HOSTS = ['evently-qmou.onrender.com']
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key')
 
