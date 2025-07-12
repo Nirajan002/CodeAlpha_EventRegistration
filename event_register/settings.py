@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wbbj9!1=02u*h8f-36!#lmec9#zo(8we%y*9iy!cju4c4nxkmm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = 'True'
 
-ALLOWED_HOSTS = ['evently-qmou.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'evently-qmou.onrender.com']
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key')
 
@@ -136,7 +136,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 # Default primary key field type

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evently</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -12,7 +12,11 @@
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">📅 <span>Evently | {{ user.username | title }}</span></div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox" />
+
+        <div class="logo"><span>📅</span> <span class="logo-text">Evently | {{ user.username | title }}</span></div>
+
+        <label for="menu-toggle" class="menu-icon">&#x22EE;</label>
 
         <nav class="nav-links">
             <a href="{% url 'event_list' %}" class="btn">Home</a>
